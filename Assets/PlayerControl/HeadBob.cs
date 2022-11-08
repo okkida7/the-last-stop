@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class HeadBob : MonoBehaviour
 {
-    Vector3 startPos;
-    public float amplitude = 10f;
-    public float period = 5f;
+    public Animator camAnim;
 
-    protected void Start()
+    private void Update()
     {
-        startPos = transform.position;
-    }
-
-    protected void Update()
-    {
-        float theta = Time.timeSinceLevelLoad / period;
-        float distance = amplitude * Mathf.Sin(theta);
-        transform.position = startPos + Vector3.up * distance;
-        print(transform.position);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            camAnim.SetTrigger("walk");
+        }
+        else
+        {
+            camAnim.SetTrigger("idle");
+        }
     }
 }
