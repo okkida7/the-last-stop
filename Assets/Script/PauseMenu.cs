@@ -17,10 +17,18 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
         {
             Cursor.visible = true;
-            pauseMenu.SetActive(true);
+            if(settings.activeSelf || controls.activeSelf || mouseSen.activeSelf || musicAndSound.activeSelf)
+            {
+                pauseMenu.SetActive(false);
+            }
+            else
+            {
+                pauseMenu.SetActive(true);
+            }
+            
             Time.timeScale = 0f;
         }
     }
