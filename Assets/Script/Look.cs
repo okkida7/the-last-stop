@@ -8,6 +8,7 @@ public class Look : MonoBehaviour
     public Transform player;
     public Transform cams;
 
+    // WebGL sen is 100 x 100
     public float xSensitivity;
     public float ySensitivity;
     public float maxAngle;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject guide;
     public GameObject pauseMenu;
     public GameObject settings;
     public GameObject controls;
@@ -20,21 +21,26 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
         {
             Cursor.visible = true;
-            if(settings.activeSelf || controls.activeSelf || mouseSen.activeSelf || musicAndSound.activeSelf)
+            guide.SetActive(false);
+            Time.timeScale = 0f;
+            if(pauseMenu.activeSelf)
             {
-                pauseMenu.SetActive(false);
+                Resume();
             }
             else
             {
                 pauseMenu.SetActive(true);
+                settings.SetActive(false);
+                controls.SetActive(false);
+                mouseSen.SetActive(false);
+                musicAndSound.SetActive(false);
             }
-            
-            Time.timeScale = 0f;
         }
     }
 
     public void Resume()
     {
+        guide.SetActive(true);
         pauseMenu.SetActive(false);
         settings.SetActive(false);
         controls.SetActive(false);

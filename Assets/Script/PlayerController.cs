@@ -5,10 +5,10 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
+    // WebGL speed is 300
     public float speed;
     private Rigidbody rig;
     public float jumpForce;
-    public Camera normalCam;
     public Transform groundDetector;
     public LayerMask ground;
     //private Vector3 camOrigin;
@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Camera.main.enabled = false;
         rig = GetComponent<Rigidbody>();
         //camOrigin = normalCam.transform.localPosition;
     }
